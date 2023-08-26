@@ -1,0 +1,13 @@
+@import '/src/styles/vars.scss';
+.header {
+  width: 100%;
+}
+
+.button {
+  margin: 10px auto;
+  width: 45px;
+  height: 40px;
+  background-color: $light;
+  box-shadow: 0px 0px 5px $gray;
+  cursor: pointer;
+}
