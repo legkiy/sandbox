@@ -22,16 +22,23 @@ const Modal = ({ opened, onClose, children }: IModal) => {
   return createPortal(
     <div
       className={classNames(style['modal-wrapper'], {
-        [style['opened']]: expand,
-        [style['closed']]: !opened,
+        [style['opened-wrapper']]: expand,
+        [style['closed-wrapper']]: !opened,
       })}
-      ref={modalRef}
     >
-      <Button onClick={onClose}>Close</Button>
-      <div>asddasdasdsa</div>
-      {children}
+      <div
+        className={classNames(style.modal, {
+          [style['opened-modal']]: expand,
+          // [style['closed-modal']]: !opened,
+        })}
+        ref={modalRef}
+      >
+        <Button onClick={onClose}>Close</Button>
+        <div>asddasdasdsa</div>
+        {children}
+      </div>
     </div>,
-    document.body
+    document?.body
   );
 };
 export default memo(Modal);
