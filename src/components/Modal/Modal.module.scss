@@ -1,0 +1,18 @@
+@import '../../styles/vars.scss';
+@import '/src/styles/mixins.scss';
+
+.modal-wrapper {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.365);
+  transform: scale(0);
+  transform: blur(0);
+  @include transiton();
+}
+.opened {
+  transform: scale(1);
+}
+.closed {
+  transform: scale(0);
+}
