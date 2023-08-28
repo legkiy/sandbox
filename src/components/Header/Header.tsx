@@ -1,18 +1,22 @@
 'use client';
-import { memo } from 'react';
+import { memo, useState } from 'react';
+import { Modal } from '@/components';
 import style from './Header.module.scss';
-import { useModal } from '@/hooks';
 
 interface Props {}
 const Header = (props: Props) => {
-  const { modal, modalIsOpen, setModalIsOpen } = useModal();
+  const [open, setOpen] = useState(false);
   return (
     <header className={style.header}>
       <div
         className={style.button}
-        onClick={() => setModalIsOpen((prev) => !prev)}
+        onClick={() => {
+          setOpen(true);
+        }}
       ></div>
-      {modalIsOpen && modal}
+      <Modal opened={open} onClose={() => setOpen(false)}>
+        asdadssad
+      </Modal>
     </header>
   );
 };

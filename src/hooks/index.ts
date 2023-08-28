@@ -1,3 +1,4 @@
-import useModal from './useModal/useModal';
+import useMounted from './useMounted';
+import useClickOutside from './useClickOutside';
 
-export { useModal };
+export { useMounted, useClickOutside };
