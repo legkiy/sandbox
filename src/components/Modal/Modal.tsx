@@ -1,5 +1,5 @@
 'use client';
-import { ReactNode, memo, useRef } from 'react';
+import { Fragment, ReactNode, memo, useRef } from 'react';
 import { useClickOutside, useMounted } from '@/hooks';
 import { Button } from '@/components';
 import { createPortal } from 'react-dom';
@@ -10,8 +10,18 @@ interface IModal {
   opened: boolean;
   onClose: () => void;
   children: ReactNode;
+  className?: string;
+  wrapperClassName?: string;
+  replaceModalBox?: boolean;
 }
-const Modal = ({ opened, onClose, children }: IModal) => {
+const Modal = ({
+  opened,
+  onClose,
+  children,
+  className,
+  wrapperClassName,
+  replaceModalBox = false,
+}: IModal) => {
   const { mounted, expand } = useMounted(opened);
   const modalRef = useRef(null);
 
@@ -21,24 +31,35 @@ const Modal = ({ opened, onClose, children }: IModal) => {
 
   return createPortal(
     <div
-      className={classNames(style['modal-wrapper'], {
-        [style['opened-wrapper']]: expand,
-        [style['closed-wrapper']]: !opened,
-      })}
+      className={classNames(
+        style['modal-wrapper'],
+        {
+          [style['opened-wrapper']]: expand,
+          [style['closed-wrapper']]: !opened,
+        },
+        wrapperClassName,
+      )}
     >
-      <div
-        className={classNames(style.modal, {
-          [style['opened-modal']]: expand,
-          // [style['closed-modal']]: !opened,
-        })}
-        ref={modalRef}
-      >
-        <Button onClick={onClose}>Close</Button>
-        <div>asddasdasdsa</div>
-        {children}
-      </div>
+      {replaceModalBox ? (
+        <div ref={modalRef}>{children}</div>
+      ) : (
+        <div
+          className={classNames(
+            style.modal,
+            {
+              [style['opened-modal']]: expand,
+              // [style['closed-modal']]: !opened,
+            },
+            className,
+          )}
+          ref={modalRef}
+        >
+          <Button onClick={onClose}>Close</Button>
+          {children}
+        </div>
+      )}
     </div>,
-    document?.body
+    document?.body,
   );
 };
 export default memo(Modal);
