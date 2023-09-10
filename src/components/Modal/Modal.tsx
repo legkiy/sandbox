@@ -1,7 +1,7 @@
 'use client';
 import { Fragment, ReactNode, memo, useRef } from 'react';
 import { useClickOutside, useMounted } from '@/hooks';
-import { Button } from '@/components';
+import { Button } from '@/components/common';
 import { createPortal } from 'react-dom';
 import style from './Modal.module.scss';
 import classNames from 'classnames';
@@ -23,7 +23,7 @@ const Modal = ({
   replaceModalBox = false,
 }: IModal) => {
   const { mounted, expand } = useMounted(opened);
-  const modalRef = useRef(null);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   useClickOutside(onClose, modalRef);
 

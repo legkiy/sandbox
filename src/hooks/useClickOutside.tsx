@@ -6,7 +6,6 @@ const useClickOutside = (
 ) => {
   const handleClick = useCallback(
     (e: MouseEvent) => {
-      // if (!ref?.current) return;
       if (ref?.current && !ref?.current.contains(e?.target as HTMLElement)) {
         onClick();
       }

@@ -14,7 +14,7 @@ type ButtonType = {
   HTMLButtonElement
 >;
 
-const Button = ({ children, className, ...props }: ButtonType) => {
+const Button: React.FC<ButtonType> = ({ children, className }, props) => {
   return (
     <button className={classNames(style.button, className)} {...props}>
       {children}

@@ -1,0 +1,56 @@
+@import '/src/styles/vars.scss';
+@import '/src/styles/mixins.scss';
+
+.menu {
+  background-color: $light;
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  top: 10px;
+  left: calc(50% - (45px / 2));
+
+  &-open {
+    top: 15vh;
+    left: 15vw;
+    width: 70vw;
+    height: 70vh;
+    @include sm() {
+      left: 10vw;
+      width: 80vw;
+    }
+    @include xs() {
+      top: 10vh;
+      left: 5vw;
+      width: 90vw;
+    }
+  }
+
+  &-back {
+    position: absolute;
+    top: 10px;
+    width: 45px;
+    height: 45px;
+    box-shadow: 0 0 100px rgba(41, 41, 41, 0.5);
+    border-radius: 100px;
+    left: calc(50% - (45px / 2));
+
+    &-open {
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      background-color: rgba(41, 41, 41, 0.239);
+      backdrop-filter: blur(2px);
+      border-radius: 10px;
+    }
+  }
+
+  &-btn {
+    display: flex;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background-color: $light;
+    cursor: pointer;
+  }
+}

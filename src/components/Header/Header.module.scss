@@ -3,18 +3,13 @@
 
 .header {
   width: 100%;
-  height: 60px;
+  height: 45px;
   display: flex;
   margin: 10px 0;
   padding: 0 20px;
   align-items: center;
   justify-content: space-between;
 
-  .test {
-    width: 45px;
-    height: 45px;
-    background-color: $light;
-  }
   .item {
     flex: 1;
     text-align: center;
