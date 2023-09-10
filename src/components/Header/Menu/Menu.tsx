@@ -1,7 +1,9 @@
-import { useRef, useState } from 'react';
+import { ReactNode, useRef, useState } from 'react';
 import { useMounted, useClickOutside } from '@/hooks';
 import classNames from 'classnames';
 import style from './Menu.module.scss';
+import MenuItem, { IMenuItem } from './MenuItem/MenuItem';
+import rangeIcon from '../../../../public/menuIIcons/slider-icon.svg';
 
 interface IProps {}
 const Menu: React.FC<IProps> = ({}) => {
@@ -11,6 +13,9 @@ const Menu: React.FC<IProps> = ({}) => {
   const { expand, mounted } = useMounted(menuOpen);
   useClickOutside(() => setMenuOpen(false), menuRef);
 
+  const items: IMenuItem[] = [
+    { title: 'range slider', imgName: rangeIcon, href: 'slider-demo' },
+  ];
   return (
     <>
       <div
@@ -31,7 +36,10 @@ const Menu: React.FC<IProps> = ({}) => {
               [style['menu-close']]: !menuOpen,
             })}
             ref={menuRef}
-          ></div>
+          >
+            {expand &&
+              items.map(props => <MenuItem {...props} key={props.href} />)}
+          </div>
         </>
       )}
     </>

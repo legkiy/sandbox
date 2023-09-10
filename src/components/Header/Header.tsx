@@ -5,6 +5,7 @@ import style from './Header.module.scss';
 import classNames from 'classnames';
 import { useClickOutside, useMounted } from '@/hooks';
 import Menu from './Menu';
+import Image from 'next/image';
 
 interface Props {}
 const Header: React.FC<Props> = ({}: Props) => {
@@ -12,7 +13,13 @@ const Header: React.FC<Props> = ({}: Props) => {
   const menuRef = useRef(null);
 
   const menuItems = [
-    { component: <></> },
+    {
+      component: (
+        <>
+          <Image src="/public/next.svg" alt="test" width={100} height={100} />
+        </>
+      ),
+    },
     {
       component: <Menu />,
     },

@@ -14,6 +14,9 @@
     left: 15vw;
     width: 70vw;
     height: 70vh;
+    border-radius: 50px;
+    padding: 50px;
+
     @include sm() {
       left: 10vw;
       width: 80vw;

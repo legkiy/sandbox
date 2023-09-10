@@ -33,3 +33,20 @@ button {
   cursor: pointer;
   border: none;
 }
+
+main {
+  margin: auto;
+  width: 1100px;
+
+  @include lg() {
+    width: 900px;
+  }
+
+  @include md() {
+    width: 700px;
+  }
+
+  @include sm() {
+    width: 90%;
+  }
+}
