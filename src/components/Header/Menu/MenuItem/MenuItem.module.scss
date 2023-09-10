@@ -1,0 +1,14 @@
+@import '/src/styles/mixins.scss';
+@import '/src/styles/vars.scss';
+
+.menu-item {
+  // display: flex;
+  width: 100px;
+  .icon {
+    width: 70px;
+    height: 70px;
+    padding: 5px;
+    border: 1px solid $gray;
+    border-radius: $radiusDef;
+  }
+}
