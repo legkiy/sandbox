@@ -1,11 +1,12 @@
 'use client';
 import { Fragment, memo, useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/common';
+import { useClickOutside, useMounted } from '@/hooks';
 import style from './Header.module.scss';
 import classNames from 'classnames';
-import { useClickOutside, useMounted } from '@/hooks';
 import Menu from './Menu';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface Props {}
 const Header: React.FC<Props> = ({}: Props) => {
@@ -16,7 +17,7 @@ const Header: React.FC<Props> = ({}: Props) => {
     {
       component: (
         <>
-          <Image src="/public/next.svg" alt="test" width={100} height={100} />
+          <Link href="/">Home</Link>
         </>
       ),
     },

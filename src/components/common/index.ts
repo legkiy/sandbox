@@ -1,2 +1,4 @@
 import Button from '../common/Button';
-export { Button };
+import RangeSlider from '../common/RangeSlider';
+
+export { Button, RangeSlider };

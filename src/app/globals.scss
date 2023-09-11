@@ -24,6 +24,7 @@ body {
   * {
     @include transiton();
   }
+  height: 100vh;
 }
 div {
   border-radius: 14px;
@@ -36,6 +37,7 @@ button {
 
 main {
   margin: auto;
+  margin-top: 40px;
   width: 1100px;
 
   @include lg() {
@@ -49,4 +51,8 @@ main {
   @include sm() {
     width: 90%;
   }
+}
+
+a {
+  text-decoration: none;
 }

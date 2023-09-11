@@ -38,7 +38,13 @@ const Menu: React.FC<IProps> = ({}) => {
             ref={menuRef}
           >
             {expand &&
-              items.map(props => <MenuItem {...props} key={props.href} />)}
+              items.map(props => (
+                <MenuItem
+                  {...props}
+                  key={props.href}
+                  onClick={() => setMenuOpen(false)}
+                />
+              ))}
           </div>
         </>
       )}

@@ -7,13 +7,14 @@ export interface IMenuItem {
   title: string;
   imgName: string;
   href: string;
+  onClick?: () => void;
 }
-const MenuItem: React.FC<IMenuItem> = ({ title, imgName, href }) => {
+const MenuItem: React.FC<IMenuItem> = ({ title, imgName, href, onClick }) => {
   return (
-    <div className={classNames(style['menu-item'])}>
+    <div className={classNames(style['menu-item'])} onClick={onClick}>
       <Link href={href}>
         <Image src={imgName} alt={title} className={style['icon']} />
-        <h3>{title}</h3>
+        <h3 className={style.title}>{title}</h3>
       </Link>
     </div>
   );
