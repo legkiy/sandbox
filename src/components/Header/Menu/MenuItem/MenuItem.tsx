@@ -5,15 +5,24 @@ import Link from 'next/link';
 
 export interface IMenuItem {
   title: string;
-  imgName: string;
   href: string;
   onClick?: () => void;
 }
-const MenuItem: React.FC<IMenuItem> = ({ title, imgName, href, onClick }) => {
+const MenuItem: React.FC<IMenuItem> = ({ title, href, onClick }) => {
   return (
     <div className={classNames(style['menu-item'])} onClick={onClick}>
       <Link href={href}>
-        <Image src={imgName} alt={title} className={style['icon']} />
+        <Image
+          src={'/menuIcons/' + href + '.svg'}
+          alt={title}
+          className={style['icon']}
+          quality={100}
+          width={90}
+          height={90}
+          placeholder="blur"
+          blurDataURL={'/menuIcons/' + href + '.svg'}
+          onError={erorr => console.log('Menu Item Image ERROR: ', href, erorr)}
+        />
         <h3 className={style.title}>{title}</h3>
       </Link>
     </div>

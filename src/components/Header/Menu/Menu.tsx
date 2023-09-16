@@ -3,7 +3,6 @@ import { useMounted, useClickOutside } from '@/hooks';
 import classNames from 'classnames';
 import style from './Menu.module.scss';
 import MenuItem, { IMenuItem } from './MenuItem/MenuItem';
-import rangeIcon from '../../../../public/menuIIcons/slider-icon.svg';
 
 interface IProps {}
 const Menu: React.FC<IProps> = ({}) => {
@@ -14,8 +13,13 @@ const Menu: React.FC<IProps> = ({}) => {
   useClickOutside(() => setMenuOpen(false), menuRef);
 
   const items: IMenuItem[] = [
-    { title: 'range slider', imgName: rangeIcon, href: 'slider-demo' },
+    {
+      title: 'range slider',
+      href: 'range-slider',
+    },
+    { title: 'ToDo', href: 'todo' },
   ];
+
   return (
     <>
       <div

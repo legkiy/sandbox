@@ -12,7 +12,7 @@ const useMounted = (opened: boolean) => {
     if (mounted && !expand) {
       setTimeout(() => {
         setExpand(true);
-      }, 300);
+      }, 100);
     } else if (!opened && mounted) {
       setExpand(false);
       setTimeout(() => {
