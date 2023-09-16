@@ -15,4 +15,5 @@ class ToDoStore {
     this.tasks = [task, ...this.tasks];
   };
 }
+
 export default new ToDoStore();

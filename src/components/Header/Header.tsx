@@ -13,7 +13,7 @@ const Header: React.FC<Props> = ({}: Props) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
-  const menuItems = [
+  const headerItems = [
     {
       component: (
         <>
@@ -30,7 +30,7 @@ const Header: React.FC<Props> = ({}: Props) => {
   useClickOutside(() => setMenuOpen(false), menuRef);
   return (
     <header className={style.header}>
-      {menuItems.map((item, index) => (
+      {headerItems.map((item, index) => (
         <div key={index} className={style.item}>
           {item.component}
         </div>

@@ -9,14 +9,19 @@ import style from './Button.module.scss';
 
 type ButtonType = {
   children: ReactNode;
-} & DetailedHTMLProps<
-  ButtonHTMLAttributes<HTMLButtonElement>,
-  HTMLButtonElement
->;
+  // onClick: () => void;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button: React.FC<ButtonType> = ({ children, className }, props) => {
+const Button: React.FC<ButtonType> = (
+  { children, className, onClick },
+  props,
+) => {
   return (
-    <button className={classNames(style.button, className)} {...props}>
+    <button
+      className={classNames(style.button, className)}
+      onClick={onClick}
+      {...props}
+    >
       {children}
     </button>
   );
