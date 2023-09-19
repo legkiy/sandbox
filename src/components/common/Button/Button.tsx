@@ -9,20 +9,15 @@ import style from './Button.module.scss';
 
 type ButtonType = {
   children: ReactNode;
-  // onClick: () => void;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+} & DetailedHTMLProps<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+>;
 
-const Button: React.FC<ButtonType> = (
-  { children, className, onClick },
-  props,
-) => {
+const Button: React.FC<ButtonType> = props => {
   return (
-    <button
-      className={classNames(style.button, className)}
-      onClick={onClick}
-      {...props}
-    >
-      {children}
+    <button className={classNames(style.button, props.className)} {...props}>
+      {props.children}
     </button>
   );
 };

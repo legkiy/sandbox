@@ -1,0 +1,5 @@
+@import '/src/styles/mixins.scss';
+
+.textarea {
+  @include transiton(0ms, all);
+}

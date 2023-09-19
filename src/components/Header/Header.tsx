@@ -1,11 +1,8 @@
 'use client';
 import { Fragment, memo, useEffect, useRef, useState } from 'react';
-import { Button } from '@/components/common';
 import { useClickOutside, useMounted } from '@/hooks';
 import style from './Header.module.scss';
-import classNames from 'classnames';
 import Menu from './Menu';
-import Image from 'next/image';
 import Link from 'next/link';
 
 interface Props {}
@@ -29,12 +26,14 @@ const Header: React.FC<Props> = ({}: Props) => {
   const { expand, mounted } = useMounted(menuOpen);
   useClickOutside(() => setMenuOpen(false), menuRef);
   return (
-    <header className={style.header}>
-      {headerItems.map((item, index) => (
-        <div key={index} className={style.item}>
-          {item.component}
-        </div>
-      ))}
+    <header className={style['header-wrapper']}>
+      <div className={style.header}>
+        {headerItems.map((item, index) => (
+          <div key={index} className={style.item}>
+            {item.component}
+          </div>
+        ))}
+      </div>
     </header>
   );
 };
