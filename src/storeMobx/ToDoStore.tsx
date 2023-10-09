@@ -4,6 +4,7 @@ export type TaskType = {
   title: string;
   status: 'awaiting' | 'in progress' | 'complite';
   description?: string;
+  createAt: Date;
 };
 
 class ToDoStore {
@@ -15,5 +16,5 @@ class ToDoStore {
     this.tasks = [task, ...this.tasks];
   };
 }
-
-export default new ToDoStore();
+const TodoStore = new ToDoStore();
+export default TodoStore;

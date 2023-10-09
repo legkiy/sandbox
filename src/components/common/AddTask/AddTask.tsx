@@ -19,7 +19,7 @@ const AddTask: FC<IAddTask> = observer(() => {
   });
 
   const newTask: TaskType = useMemo(
-    () => ({ title: taskTitle, status: 'awaiting' }),
+    () => ({ title: taskTitle, status: 'awaiting', createAt: new Date() }),
     [taskTitle],
   );
 
@@ -40,7 +40,7 @@ const AddTask: FC<IAddTask> = observer(() => {
         value={taskTitle}
         onChange={({ target }) => setTaskTitle(target.value)}
       />
-      <TextArea rows={4} />
+      <TextArea rows={4} title="aaaa" />
       <Button type="submit" onClick={e => onSubmit(e)}>
         add task
       </Button>

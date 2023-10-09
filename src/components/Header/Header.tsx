@@ -4,12 +4,19 @@ import { useClickOutside, useMounted } from '@/hooks';
 import style from './Header.module.scss';
 import Menu from './Menu';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 
 interface Props {}
 const Header: React.FC<Props> = ({}: Props) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [lang, setLang] = useState('en-US');
   const menuRef = useRef(null);
 
+  useEffect(() => {
+    const local = window.navigator.language;
+    setLang(local);
+  }, []);
+  
   const headerItems = [
     {
       component: (
@@ -21,7 +28,7 @@ const Header: React.FC<Props> = ({}: Props) => {
     {
       component: <Menu />,
     },
-    { component: <></> },
+    { component: <>lang: {lang}</> },
   ];
   const { expand, mounted } = useMounted(menuOpen);
   useClickOutside(() => setMenuOpen(false), menuRef);
