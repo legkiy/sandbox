@@ -18,6 +18,7 @@ const Menu: React.FC<IProps> = ({}) => {
       href: 'range-slider',
     },
     { title: 'ToDo', href: 'todo' },
+    { title: 'DnD', href: 'dnd' },
   ];
 
   return (

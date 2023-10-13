@@ -21,9 +21,14 @@
     flex-basis: calc(100% / 2);
   }
   .icon {
+    display: flex;
+    margin: auto;
     padding: 5px;
     border-radius: 30%;
     box-shadow: 0 0 15px $gray;
+    justify-content: center;
+    align-items: center;
+
     &:active {
       background: $gray;
     }

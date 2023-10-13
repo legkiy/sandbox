@@ -1,10 +1,9 @@
 'use client';
-import { Fragment, memo, useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { useClickOutside, useMounted } from '@/hooks';
 import style from './Header.module.scss';
 import Menu from './Menu';
-import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { BreadCrumbs } from '../common';
 
 interface Props {}
 const Header: React.FC<Props> = ({}: Props) => {
@@ -16,12 +15,12 @@ const Header: React.FC<Props> = ({}: Props) => {
     const local = window.navigator.language;
     setLang(local);
   }, []);
-  
+
   const headerItems = [
     {
       component: (
         <>
-          <Link href="/">Home</Link>
+          <BreadCrumbs />
         </>
       ),
     },

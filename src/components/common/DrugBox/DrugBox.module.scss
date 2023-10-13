@@ -1,0 +1,26 @@
+@import '/src/styles/vars.scss';
+@import '/src/styles/mixins.scss';
+.drug-box {
+  background-color: $light;
+  color: black;
+  padding: 20px;
+  height: 200px;
+  width: 150px;
+  position: absolute;
+  @include transiton(0ms);
+}
+
+.dnd {
+  @include transiton(0ms);
+}
+.drug-box-2 {
+  background-color: red;
+  margin: 10px;
+  height: 200px;
+  width: 150px;
+}
+
+.drug-box-3 {
+  background-color: blue;
+  @include transiton(0ms);
+}
