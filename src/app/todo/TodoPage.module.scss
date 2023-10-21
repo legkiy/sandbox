@@ -1,3 +1,10 @@
 .todo-page {
-  display: flex;
+}
+
+.modal-ada-task {
+  width: fit-content !important;
+  height: fit-content !important;
+  * {
+    color: black;
+  }
 }

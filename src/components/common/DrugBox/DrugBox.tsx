@@ -38,6 +38,7 @@ const DragAndDrop: FC<IDragAndDrop> = ({ children }) => {
     }
     return () => window.removeEventListener('mousemove', onMouseMove);
   }, [isDragging, initialMousePosition]);
+
   useEffect(() => {
     const onMouseUp = () => setIsDragging(false);
     window.addEventListener('mouseup', onMouseUp);
@@ -100,19 +101,6 @@ const DrugBox: FC<IDrugBox> = ({}) => {
       <DragAndDrop>
         <div className={styles['drug-box-2']}></div>
       </DragAndDrop>
-      <div
-        className={styles['drug-box-3']}
-        ref={ref}
-        style={{
-          // position: 'absolute',
-          width: 50,
-          height: 50,
-          marginLeft: elementOffset.x,
-          marginTop: elementOffset.y,
-        }}
-      >
-        dnd
-      </div>
     </>
   );
 };

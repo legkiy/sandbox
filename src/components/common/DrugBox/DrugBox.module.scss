@@ -11,11 +11,11 @@
 }
 
 .dnd {
+  width: min-content;
   @include transiton(0ms);
 }
 .drug-box-2 {
   background-color: red;
-  margin: 10px;
   height: 200px;
   width: 150px;
 }

@@ -5,6 +5,7 @@ export type TaskType = {
   status: 'awaiting' | 'in progress' | 'complite';
   description?: string;
   createAt: Date;
+  id: string
 };
 
 class ToDoStore {
@@ -12,7 +13,7 @@ class ToDoStore {
   constructor() {
     makeAutoObservable(this);
   }
-  addToDo = (task: TaskType) => {
+  setTasks = (task: TaskType) => {
     this.tasks = [task, ...this.tasks];
   };
 }

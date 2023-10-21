@@ -54,7 +54,9 @@ const Modal = ({
           )}
           ref={modalRef}
         >
-          <Button onClick={onClose}>Close</Button>
+          <Button onClick={onClose} className={style['close-btn']}>
+            +
+          </Button>
           {children}
         </div>
       )}

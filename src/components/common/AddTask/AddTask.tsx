@@ -1,16 +1,21 @@
 'use client';
-import { FC, memo, useMemo, useState, MouseEvent } from 'react';
+import { FC, memo, useMemo, useState, MouseEvent, useId } from 'react';
 import style from './AddTask.module.scss';
 import { observer } from 'mobx-react-lite';
 import ToDoStore, { TaskType } from '@/storeMobx/ToDoStore';
 import { Button, Input, TextArea } from '@/components/common';
 import { useForm } from 'react-hook-form';
 
-interface IAddTask {}
+interface IAddTask {
+  onAddTask?: () => void;
+}
 
-const AddTask: FC<IAddTask> = observer(() => {
-  const { addToDo, tasks } = ToDoStore;
+const AddTask: FC<IAddTask> = observer(({ onAddTask }) => {
+  const { setTasks, tasks } = ToDoStore;
   const [taskTitle, setTaskTitle] = useState('');
+  const [taskDesc, setTaskDesc] = useState('');
+
+  const toDoId = useId();
 
   const { register, handleSubmit } = useForm<TaskType>({
     defaultValues: {
@@ -19,13 +24,23 @@ const AddTask: FC<IAddTask> = observer(() => {
   });
 
   const newTask: TaskType = useMemo(
-    () => ({ title: taskTitle, status: 'awaiting', createAt: new Date() }),
-    [taskTitle],
+    () => ({
+      title: taskTitle,
+      status: 'awaiting',
+      createAt: new Date(),
+      id: toDoId,
+    }),
+    [taskTitle, toDoId],
   );
 
   const onSubmit = (e: MouseEvent) => {
     e.preventDefault();
-    addToDo(newTask);
+    if (!taskTitle) return;
+    setTasks(newTask);
+    setTaskTitle('');
+    setTaskDesc('');
+
+    onAddTask && onAddTask();
   };
 
   return (
@@ -40,7 +55,12 @@ const AddTask: FC<IAddTask> = observer(() => {
         value={taskTitle}
         onChange={({ target }) => setTaskTitle(target.value)}
       />
-      <TextArea rows={4} title="aaaa" />
+      <TextArea
+        rows={4}
+        title="Descriotion"
+        value={taskDesc}
+        onChange={({ target }) => setTaskDesc(target.value)}
+      />
       <Button type="submit" onClick={e => onSubmit(e)}>
         add task
       </Button>
